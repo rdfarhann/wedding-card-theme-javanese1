@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { Suspense } from "react";
 import { SiteShell } from "@/components/site-shell";
 import { Hero, HeroFallback } from "@/components/hero";
