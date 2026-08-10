@@ -11,18 +11,20 @@ interface GeneratedLink {
 }
 
 const DEFAULT_TEMPLATE = [
-  "Assalamu'alaikum Bapak/Ibu/Saudara/i {nama},",
+  "Assalamu’alaikum Wr. Wb.",
   "",
-  "Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i",
-  "untuk hadir di acara pernikahan kami.",
+  "Yth. Bapak/Ibu/Saudara/i {nama},",
   "",
-  "Berikut link undangan digital kami:",
+  "Tanpa mengurangi rasa hormat, sehubungan dengan digelarnya acara pernikahan kami, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dan memberikan doa restu.",
+  "",
+  "Detail informasi dan lokasi acara dapat diakses melalui link undangan digital berikut:",
   "{link}",
   "",
-  "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila",
-  "Bapak/Ibu/Saudara/i berkenan hadir.",
+  "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kami.",
   "",
-  "Terima kasih 🙏",
+  "Atas perhatian dan kehadiran Bapak/Ibu/Saudara/i, kami ucapkan terima kasih.",
+  "",
+  "Wassalamu’alaikum Wr. Wb.",
 ].join("\n");
 
 export default function GeneratorPage() {
@@ -117,7 +119,7 @@ export default function GeneratorPage() {
               id="message-template"
               value={messageTemplate}
               onChange={(e) => setMessageTemplate(e.target.value)}
-              rows={10}
+              rows={12}
               className="w-full resize-none border border-sogan/20 bg-white p-3 font-body text-sm focus:border-gold focus:outline-none"
             />
           </div>
