@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { invitationConfig } from "@/data/config";
 import { Reveal } from "./reveal";
 
@@ -14,11 +14,27 @@ interface TimeLeft {
   seconds: number;
 }
 
-export function Hero() {
+// Sub-komponen khusus untuk membaca searchParams
+function GuestGreeting() {
   const searchParams = useSearchParams();
-
   const rawGuest = searchParams.get("to")?.trim();
   const guestName = rawGuest || invitationConfig.fallbackGuestName;
+
+  return (
+    <Reveal delay={0.15}>
+      <div className="mt-4 text-center">
+        <p className="font-body text-xs uppercase tracking-widest text-ivory/80">
+          Kepada Yth. Bapak/Ibu/Saudara/i:
+        </p>
+        <p className="mt-1 font-display text-lg font-semibold text-gold">
+          {guestName}
+        </p>
+      </div>
+    </Reveal>
+  );
+}
+
+export function Hero() {
   const mainSchedule = invitationConfig.schedule[0];
 
   // Logic Countdown Timer
@@ -99,6 +115,11 @@ export function Hero() {
             {invitationConfig.bride.nickname}
           </h1>
         </Reveal>
+
+        {/* Nama Tamu dari searchParams (Dibungkus Suspense) */}
+        <Suspense fallback={null}>
+          <GuestGreeting />
+        </Suspense>
 
         {/* Tanggal & Lokasi Pernikahan */}
         {mainSchedule && (
