@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { Suspense, useEffect, useState, type ReactNode } from "react";
 import { AudioProvider } from "./audio-provider";
 import { OpeningScreen } from "./opening-screen";
 import { MusicPlayer } from "./music-player";
@@ -22,7 +22,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <AudioProvider>
       <CustomCursor />
-      <OpeningScreen onOpen={() => setOpened(true)} />
+      <Suspense fallback={null}>
+        <OpeningScreen onOpen={() => setOpened(true)} />
+      </Suspense>
 
       <div
         aria-hidden={!opened}
